@@ -124,6 +124,7 @@ class BasemlTest(Common):
     def tearDown(self):
         _cleanupFiles(self.bml)
 
+
 class Yn00Test(Common):
     """Tests for PAML tool yn00."""
 
@@ -145,6 +146,7 @@ class Yn00Test(Common):
 
     def tearDown(self):
         _cleanupFiles(self.yn)
+
 
 if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)
