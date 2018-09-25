@@ -53,6 +53,18 @@ for binary in binaries:
             "Install PAML if you want to use the Bio.Phylo.PAML wrapper.")
 
 
+def _cleanupFiles(testclass):
+    """Cleanup extra files."""
+    if os.path.exists(testclass.out_file):
+        os.remove(testclass.out_file)
+
+    if os.path.exists(testclass.working_dir):
+        for filename in os.listdir(testclass.working_dir):
+            filepath = os.path.join(testclass.working_dir, filename)
+            os.remove(filepath)
+        os.rmdir(testclass.working_dir)
+
+
 class Common(unittest.TestCase):
     """Base class for PAML unit tests."""
 
@@ -86,6 +98,9 @@ class CodemlTest(Common):
         self.assertEqual(len(results["NSsites"]), 1)
         self.assertEqual(len(results["NSsites"][0]), 5)
 
+    def tearDown(self):
+        _cleanupFiles(self.cml)
+
 
 class BasemlTest(Common):
     """Tests for PAML tool baseml."""
@@ -106,6 +121,8 @@ class BasemlTest(Common):
         self.assertIn("parameters", results)
         self.assertEqual(len(results["parameters"]), 5)
 
+    def tearDown(self):
+        _cleanupFiles(self.bml)
 
 class Yn00Test(Common):
     """Tests for PAML tool yn00."""
@@ -126,6 +143,8 @@ class Yn00Test(Common):
         results = self.yn.run()
         self.assertEqual(len(results), 5)
 
+    def tearDown(self):
+        _cleanupFiles(self.yn)
 
 if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)

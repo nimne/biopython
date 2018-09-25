@@ -66,12 +66,16 @@ class PrankApplication(unittest.TestCase):
             os.remove("output.2.dnd")
         if os.path.isfile("output.2.fas"):
             os.remove("output.2.fas")
+        if os.path.isfile("output.best.fas"):
+            os.remove("output.best.fas")
         if os.path.isfile("output.2.xml"):
             os.remove("output.2.xml")
         if os.path.isfile("output.1.nex"):
             os.remove("output.1.nex")
         if os.path.isfile("output.2.nex"):
             os.remove("output.2.nex")
+        if os.path.isfile("output.best.nex"):
+            os.remove("output.best.nex")
 
     def test_Prank_simple(self):
         """Simple round-trip through app with infile.

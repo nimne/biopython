@@ -192,7 +192,7 @@ class SamtoolsTestCase(unittest.TestCase):
                 cmdline = SamtoolsVersion1xSortCommandline(samtools_exe)
                 cmdline.set_parameter("input", self.bamfile1)
                 cmdline.set_parameter("-T", "out")
-                cmdline.set_parameter("-o", "out.bam")
+                cmdline.set_parameter("-o", "SamBam/out.bam")
                 try:
                     stdout, stderr = cmdline()
                 except ApplicationError:
