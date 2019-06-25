@@ -151,7 +151,7 @@ else:
         """If s is bytes or bytearray, convert to a string (PRIVATE)."""
         if isinstance(s, (bytes, bytearray)):
             return str(s)
-        return s
+        return str(s)
 
     def _as_unicode(s):
         """If s is a (byte) string, convert to a unicode string (PRIVATE)."""
